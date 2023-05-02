@@ -1,6 +1,7 @@
 package br.com.mycompany.account.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import br.com.mycompany.account.dto.AccountResponse;
 import br.com.mycompany.account.entity.AccountEntity;
 import br.com.mycompany.account.mapper.AccountMapper;
 import br.com.mycompany.account.service.IAccountService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/accounts")
@@ -27,10 +29,10 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody AccountRequest accountRequest) {
+    public ResponseEntity create(@RequestBody @Valid AccountRequest accountRequest) {
         AccountEntity accountEntity = accountService.save(accountRequest);
         AccountResponse accountResponse = accountMapper.toAccountResponse(accountEntity);
-        return ResponseEntity.ok(accountResponse);
+        return new ResponseEntity(accountResponse, HttpStatus.CREATED);
     }
 
 }

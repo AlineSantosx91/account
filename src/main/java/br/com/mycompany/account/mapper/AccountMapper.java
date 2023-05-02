@@ -7,12 +7,13 @@ import org.mapstruct.Named;
 import br.com.mycompany.account.dto.AccountRequest;
 import br.com.mycompany.account.dto.AccountResponse;
 import br.com.mycompany.account.entity.AccountEntity;
-import br.com.mycompany.account.utils.DocumentUtils;
+import br.com.mycompany.account.utils.DocumentNumberUtils;
 
 @Mapper(componentModel = "spring")
 public abstract class AccountMapper {
 
     @Mapping(target = "accountId", ignore = true)
+    @Mapping(target = "documentNumber", source = "documentNumber", qualifiedByName = "getDocumentNumberWithoutFormatting")
     public abstract AccountEntity toAccountEntity(AccountRequest accountRequest);
 
     @Mapping(target = "documentNumber", source = "documentNumber", qualifiedByName = "getObfuscatedDocumentNumber")
@@ -21,6 +22,11 @@ public abstract class AccountMapper {
 
     @Named("getObfuscatedDocumentNumber")
     protected String getObfuscatedDocumentNumber(String documentNumber){
-        return DocumentUtils.getCPFCNPJObfuscate(documentNumber);
+        return DocumentNumberUtils.getCPFCNPJObfuscate(documentNumber);
+    }
+
+    @Named("getDocumentNumberWithoutFormatting")
+    protected String getDocumentNumberWithoutFormatting(String documentNumber){
+        return DocumentNumberUtils.getDocumentNumberWithoutFormatting(documentNumber);
     }
 }

@@ -28,4 +28,12 @@ class AccountMapperTest {
         assertEquals(accountEntity.getDocumentNumber(), "33366655544");
     }
 
+    @Test
+    public void shouldValidateToAccountEntityFormattedDocumentNumber() {
+        AccountRequest accountRequest = new AccountRequest();
+        accountRequest.setDocumentNumber("333.666.555-44");
+        AccountEntity accountEntity = accountMapper.toAccountEntity(accountRequest);
+        assertEquals(accountEntity.getDocumentNumber(), "33366655544");
+    }
+
 }

@@ -2,7 +2,7 @@ package br.com.mycompany.account.utils;
 
 import static java.util.Objects.isNull;
 
-public abstract  class DocumentUtils {
+public abstract  class DocumentNumberUtils {
 
     public static String getCPFCNPJObfuscate(String documentNumber) {
         if(isNull(documentNumber) || documentNumber.trim().isEmpty()) {
@@ -14,6 +14,13 @@ public abstract  class DocumentUtils {
             return getObfuscatedCnpj(documentNumber.substring(2, 12));
         }
         return documentNumber;
+    }
+
+    public static String getDocumentNumberWithoutFormatting(String documentNumber){
+        if(isNull(documentNumber) || documentNumber.trim().isEmpty()) {
+            return documentNumber;
+        }
+       return documentNumber.replaceAll("[^0-9]", "");
     }
 
     private static String getObfuscatedCpf(String cpf) {
