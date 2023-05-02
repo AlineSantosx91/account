@@ -13,9 +13,16 @@
       </column>
 
       <column name="document_number" type="varchar(20)">
-        <constraints  nullable="false"/>
+        <constraints nullable="false"/>
       </column>
     </createTable>
+  </changeSet>
+
+  <changeSet id="2" author="Aline">
+    <addUniqueConstraint
+      columnNames="document_number"
+      constraintName="UQ_Accounts_DocumentNumber"
+      tableName="accounts"/>
   </changeSet>
 
 </databaseChangeLog>
