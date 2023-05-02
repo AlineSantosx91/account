@@ -13,11 +13,10 @@ import jakarta.validation.constraints.NotNull;
 public class AccountRequest implements Serializable {
     @Serial
     private static final long serialVersionUID = 3913254609099174832L;
-    //    @NotNull
-//    @NotBlank
+
+    @NotNull @NotBlank
     @JsonProperty("document_number")
     private String documentNumber;
-
 
     public String getDocumentNumber() {
         return documentNumber;

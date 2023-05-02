@@ -9,16 +9,23 @@ import jakarta.validation.constraints.NotNull;
 @JsonIgnoreProperties
 public class AccountResponse {
 
-    private Long id;
+    @JsonProperty("account_id")
+    private Long accountId;
     @JsonProperty("document_number")
     private String documentNumber;
 
-    //ofuscar documento
     public String getDocumentNumber() {
         return documentNumber;
     }
-
     public void setDocumentNumber(String documentNumber) {
         this.documentNumber = documentNumber;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }
