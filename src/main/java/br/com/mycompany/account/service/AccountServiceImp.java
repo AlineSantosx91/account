@@ -18,7 +18,7 @@ public class AccountServiceImp implements IAccountService {
     }
 
     @Override
-    public AccountEntity save(AccountRequest accountRequest) {
+    public AccountEntity save(AccountRequest accountRequest) throws Exception {
         return accountRepository.save(accountRequest);
     }
 }

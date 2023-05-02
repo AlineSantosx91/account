@@ -5,6 +5,6 @@ import br.com.mycompany.account.entity.AccountEntity;
 
 public interface IAccountRepository {
 
-    AccountEntity save(AccountRequest accountRequest);
+    AccountEntity save(AccountRequest accountRequest) throws Exception;
 
 }

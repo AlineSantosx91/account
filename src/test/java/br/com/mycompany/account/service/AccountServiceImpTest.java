@@ -23,7 +23,7 @@ class AccountServiceImpTest {
     private IAccountRepository accountRepository;
 
     @Test
-    void shouldCallAccountRepository() {
+    void shouldCallAccountRepository() throws Exception {
         AccountRequest accountRequest = new AccountRequest();
         accountServiceImp.save(accountRequest);
 

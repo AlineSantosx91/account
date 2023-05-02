@@ -26,7 +26,7 @@ class AccountRepositoryImpTest {
     private AccountMapper mapper;
 
     @Test
-    void shouldSaveAccount() {
+    void shouldSaveAccount() throws Exception {
         AccountRequest accountRequest = new AccountRequest();
         AccountEntity accountEntity = new AccountEntity("123");
 
