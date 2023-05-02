@@ -30,7 +30,13 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity create(@RequestBody @Valid AccountRequest accountRequest) {
-        AccountEntity accountEntity = accountService.save(accountRequest);
+        AccountEntity accountEntity = null;
+        try {
+            accountEntity = accountService.save(accountRequest);
+        } catch (Exception e) {
+            return new ResponseEntity("Algo errado aconteceu, tente novamente mais tarde", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         AccountResponse accountResponse = accountMapper.toAccountResponse(accountEntity);
         return new ResponseEntity(accountResponse, HttpStatus.CREATED);
     }
