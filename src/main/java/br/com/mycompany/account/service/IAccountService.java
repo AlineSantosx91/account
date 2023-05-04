@@ -6,5 +6,6 @@ import br.com.mycompany.account.entity.AccountEntity;
 public interface IAccountService {
 
     AccountEntity save(AccountRequest accountRequest) throws Exception;
+    AccountEntity findByAccountId(Long accountId) throws Exception;
 
 }

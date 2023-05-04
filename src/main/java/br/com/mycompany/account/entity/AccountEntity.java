@@ -23,6 +23,9 @@ public class AccountEntity {
         this.documentNumber = documentNumber;
     }
 
+    public AccountEntity() {
+    }
+
     public Long getAccountId() {
         return accountId;
     }
