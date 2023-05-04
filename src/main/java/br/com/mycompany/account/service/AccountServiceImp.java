@@ -21,4 +21,9 @@ public class AccountServiceImp implements IAccountService {
     public AccountEntity save(AccountRequest accountRequest) throws Exception {
         return accountRepository.save(accountRequest);
     }
+
+    @Override
+    public AccountEntity findByAccountId(Long accountId) throws Exception {
+        return accountRepository.findByAccountId(accountId);
+    }
 }

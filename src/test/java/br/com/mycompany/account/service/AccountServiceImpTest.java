@@ -1,6 +1,5 @@
 package br.com.mycompany.account.service;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -23,10 +22,15 @@ class AccountServiceImpTest {
     private IAccountRepository accountRepository;
 
     @Test
-    void shouldCallAccountRepository() throws Exception {
+    void shouldCallAccountRepositorySave() throws Exception {
         AccountRequest accountRequest = new AccountRequest();
         accountServiceImp.save(accountRequest);
-
         verify(accountRepository, times(1)).save(accountRequest);
+    }
+
+    @Test
+    void shouldCallAccountRepositoryFindByAccountId() throws Exception {
+        accountServiceImp.findByAccountId(1L);
+        verify(accountRepository, times(1)).findByAccountId(1L);
     }
 }
